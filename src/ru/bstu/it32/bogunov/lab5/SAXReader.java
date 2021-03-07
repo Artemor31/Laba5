@@ -18,6 +18,14 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 
+
+
+//Чтение документа при помощи SAX
+//        Чтение документа XML сводится к переопределению методов, соответствующих событиям, рассмотренным в предыдущем разделе. Для этого используются классы пакета пакет javax.xml.parsers, такие как SAXParserFactory (позволяет получить парсер SAX) и  SAXParser (разбирает XML-документ и генерирует события).
+//        Для непосредственной обработки данных используется пакет org.xml.sax и такие его классы как:
+//        •	helpers.DefaultHandler – класс, содержащий методы, соответствующие событиям SAX, которые необходимо переопределить.
+//        •	Attributes – позволяет работать с атрибутами при наступлении события начала элемента.
+//        •	SAXException – генерируемое исключение в случае невозможности разобрать XML-документ.
 public class SAXReader {
 
     public static void main(String args[]) {
@@ -60,10 +68,21 @@ public class SAXReader {
             saxParser.parse(filepath, handler);
 
         } catch (Exception e) {
+            System.out.println("Nice file, awesome text");
             e.printStackTrace();
         }
     }
 }
+
+
+
+//    Для записи XML-документа потребуется создание пустого объекта Document. Для этого необходимо использовать у объекта DocumentBuilder не метод parse(), а метод newDocument().
+//        Далее при помощи вышеописанных методов необходимо создать корректное дерево узлов и записать его в файл или консоль. Для этого необходимо использовать ряд классов из пакета javax.xml.transform, таких как:
+//        •	TransformerFactory – конструктор для преобразований.
+//        •	Transformer – объект для выполнения фактического преобразования.
+//        •	OutputKeys  – позволяет задать параметры форматирования документа.
+//        •	dom.DOMSource – получает исходный код созданного документа.
+//        •	stream.StreamResult – создает объект для записи в него документа.
 
 class DOMWriter{
     public static void main(String[] args) {
