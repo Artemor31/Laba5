@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class School {
+    private String id;
     private String region;
     private String city;
     private String street;
@@ -28,36 +29,8 @@ public class School {
         this.directorName = _directorName;
     }
 
-    public static ArrayList<School> parseFromXML() throws ParserConfigurationException, SAXException, IOException {
-        // Получение фабрики, чтобы после получить билдер документов.
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-
-        // Получили из фабрики билдер, который парсит XML, создает структуру Document в виде иерархического дерева.
-        DocumentBuilder builder = factory.newDocumentBuilder();
-
-        // Запарсили XML, создав структуру Document. Теперь у нас есть доступ ко всем элементам, каким нам нужно.
-        Document document = builder.parse(new File("resource/xml_file1.xml"));
-
-        // Получение списка всех элементов employee внутри корневого элемента (getDocumentElement возвращает ROOT элемент XML файла).
-        NodeList schoolElements = document.getDocumentElement().getElementsByTagName("employee");
-
-        ArrayList<School> schools = new ArrayList<>();
-        // Перебор всех элементов employee
-        for (int i = 0; i < schoolElements.getLength(); i++) {
-            Node employee = schoolElements.item(i);
-
-            // Получение атрибутов каждого элемента
-            NamedNodeMap attributes = ((Node) employee).getAttributes();
-
-            // Добавление сотрудника. Атрибут - тоже Node, потому нам нужно получить значение атрибута с помощью метода getNodeValue()
-            schools.add(new School(
-                    attributes.getNamedItem("region").getNodeValue(),
-                    attributes.getNamedItem("city").getNodeValue(),
-                    attributes.getNamedItem("street").getNodeValue(),
-                    attributes.getNamedItem("name").getNodeValue(),
-                    attributes.getNamedItem("directorName").getNodeValue()));
-        }
-        return schools;
+    public void setId(String _id){
+        this.id = _id;
     }
 }
 

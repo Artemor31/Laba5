@@ -8,7 +8,7 @@ public class Main {
 
         ArrayList<School> schools = new ArrayList<>();
 
-
-
+        DOMWriter.write("./schools.xml");
+        SAXReader.read("./schools.xml");
     }
 }
