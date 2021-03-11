@@ -4,14 +4,15 @@ import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SAXReader {
-    public static void read(String path) {
+    public static List<School> read(String path) {
+        List<School> schools = new ArrayList<>();
         try {
             SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser saxParser = factory.newSAXParser();
-
-            // анонимный класс, расширяющий класс DefaultHandler
             DefaultHandler handler = new DefaultHandler() {
                 String tag = "";
 
@@ -21,20 +22,28 @@ public class SAXReader {
                         System.out.println("\nЭлемент " + qName);
                     tag = qName;
                 }
-
                 // Метод вызывается когда SAXParser считывает текст между тегами
                 @Override
                 public void characters(char[] ch, int start, int length) {
-                    if (tag.equalsIgnoreCase("region"))
-                        System.out.println("region: " + new String(ch, start, length));
-                    else if (tag.equalsIgnoreCase("city"))
-                        System.out.println("city: " + new String(ch, start, length));
-                    else if (tag.equalsIgnoreCase("street"))
-                        System.out.println("street: " + new String(ch, start, length));
-                    else if (tag.equalsIgnoreCase("name"))
-                        System.out.println("name: " + new String(ch, start, length));
-                    else if (tag.equalsIgnoreCase("directorName"))
-                        System.out.println("directorName: " + new String(ch, start, length));
+                    String[] str = new String[5];
+
+                    if (tag.equalsIgnoreCase("region")) {
+                        str[0] = new String(ch, start, length);
+                    }
+                    else if (tag.equalsIgnoreCase("city")) {
+                        str[1] = new String(ch, start, length);
+                    }
+                    else if (tag.equalsIgnoreCase("street")) {
+                        str[2] = new String(ch, start, length);
+                    }
+                    else if (tag.equalsIgnoreCase("name")) {
+                        str[3] = new String(ch, start, length);
+                    }
+                    else if (tag.equalsIgnoreCase("directorName")) {
+                        str[4] = new String(ch, start, length);
+                    }
+                    School school = new School(str[0], str[1], str[2], str[3], str[4]);
+                    schools.add(school);
                 }
                 // Метод вызывается когда SAXParser генерирует конец тега
                 @Override
@@ -46,6 +55,7 @@ public class SAXReader {
             System.out.println("Nice file, awesome text");
             e.printStackTrace();
         }
+        return schools;
     }
 }
 
