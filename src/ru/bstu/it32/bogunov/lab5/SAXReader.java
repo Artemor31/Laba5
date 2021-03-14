@@ -18,8 +18,6 @@ public class SAXReader {
 
                 @Override
                 public void startElement(String uri, String localName, String qName, Attributes attributes) {
-                    if (qName.equalsIgnoreCase("school"))
-                        System.out.println("\nЭлемент " + qName);
                     tag = qName;
                 }
                 // Метод вызывается когда SAXParser считывает текст между тегами
@@ -45,7 +43,7 @@ public class SAXReader {
                     School school = new School(str[0], str[1], str[2], str[3], str[4]);
                     schools.add(school);
                 }
-                // Метод вызывается когда SAXParser генерирует конец тега
+
                 @Override
                 public void endElement(String uri, String localName, String qName) {tag = "";}
             };
