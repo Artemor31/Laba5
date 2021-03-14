@@ -26,8 +26,7 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="c14863cb-8638-46dd-9eb5-87295e1ea8d9">
-        <schema name="schoolscontext" object-types="procedure, function, table, view" />
-        <schema name="schoolstest" object-types="procedure, constraint, column, function, table, index, dataset trigger, view" />
+        <schema name="schoolstest" object-types="table, index, dataset trigger, view, constraint, column" />
       </connection>
     </loaded-nodes>
   </component>
@@ -49,10 +48,14 @@
     <connection id="c14863cb-8638-46dd-9eb5-87295e1ea8d9" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="c14863cb-8638-46dd-9eb5-87295e1ea8d9" dataset="schoolstest.schooltest1" active-filter-id="" />
-    <filter-actions connection-id="c14863cb-8638-46dd-9eb5-87295e1ea8d9" dataset="schoolstest.schools" active-filter-id="42dcfdb2-5eaa-4e7d-b7b5-fa65f81073ac">
-      <filter id="42dcfdb2-5eaa-4e7d-b7b5-fa65f81073ac" name="1" temporary="false" custom-name="false" type="basic" join-type="AND">
+    <filter-actions connection-id="c14863cb-8638-46dd-9eb5-87295e1ea8d9" dataset="schoolstest.schooltest1" active-filter-id="EMPTY_FILTER">
+      <filter id="a1d877fd-e18c-473a-b131-fccbcdf5348c" name="1" temporary="false" custom-name="false" type="basic" join-type="AND">
         <condition column="id" operator="=" value="1" active="true" />
+      </filter>
+    </filter-actions>
+    <filter-actions connection-id="c14863cb-8638-46dd-9eb5-87295e1ea8d9" dataset="schoolstest.schools" active-filter-id="EMPTY_FILTER">
+      <filter id="42dcfdb2-5eaa-4e7d-b7b5-fa65f81073ac" name="6" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="id" operator="=" value="6" active="true" />
       </filter>
     </filter-actions>
     <filter-actions connection-id="88b27226-216c-40af-a132-b29ccb7a635a" dataset="world.city" active-filter-id="" />
@@ -186,7 +189,7 @@
           <deprecated-pwd value="MTIzNA==" />
         </database>
         <properties>
-          <auto-commit value="false" />
+          <auto-commit value="true" />
         </properties>
         <ssh-settings>
           <active value="false" />

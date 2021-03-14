@@ -3,7 +3,7 @@ package ru.bstu.it32.bogunov.lab5;
 import java.sql.*;
 
 public class DataBase {
-    public Statement connect() {
+    public static Statement connect() {
 
         String userName = "root";
         String password = "1234";
@@ -32,28 +32,34 @@ public class DataBase {
         return statement;
     }
 
-    public void addSchoolToDb(School school)
+    public void addSchoolToDb()
     {
-        Statement statement = connect();
+        School school = School.addSchoolFromConsole();
+        Statement statement = DataBase.connect();
         if(statement == null) {
             System.out.println("Error to return statement");
             return;
         }
-
         try {
-            statement.executeUpdate("insert into schools (region, city, street, name, directorName) values ('регион1', 'город1', 'улица1', 'имя1', 'директор1')");
-
-//            statement.executeUpdate("INSERT schools" +
-//                    "(region, city, street, name, directorName)" +
-//                    "VALUES (" + school.getRegion() +
-//                    "," + school.getCity() +
-//                    "," + school.getStreet() +
-//                    "," + school.getName() +
-//                    "," + school.getDirectorName() + ")");
+            statement.executeUpdate("insert into schools (region, city, street, name, directorName) " +
+                    "VALUES ('" + school.getRegion() +
+                    "', '" + school.getCity() +
+                    "', '" + school.getStreet() +
+                    "', '" + school.getName() +
+                    "', '" + school.getDirectorName() + "')");
         } catch (SQLException e) {
             System.out.println("Error to EXECUTE statement");
             e.printStackTrace();
         }
+    }
+
+    public void changeSchoolInDB(){
+
+    }
+
+    public void removeSchoolFromDB(){
+
+
     }
 }
 
