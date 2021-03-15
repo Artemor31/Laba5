@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schools>
+    <school region="регион1">
+        <city>город1</city>
+        <street>улица1</street>
+        <name>имя1</name>
+        <directorName>директор1</directorName>
+    </school>
+    <school region="регион2">
+        <city>город2</city>
+        <street>улица2</street>
+        <name>имя2</name>
+        <directorName>директор2</directorName>
+    </school>
+    <school region="регион3">
+        <city>город3</city>
+        <street>улица3</street>
+        <name>имя3</name>
+        <directorName>директор3</directorName>
+    </school>
+</schools>
