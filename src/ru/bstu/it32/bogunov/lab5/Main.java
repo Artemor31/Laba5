@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 //TODO
-// считать с пропертей параетры бд через конструктор
 // добавление, удаление, редактирование записей
 // парс из бд в XML и обратно
 // поиск по параметрам (можно несколько)
@@ -17,14 +16,8 @@ public class Main {
 
         Properties.initialize();
         ArrayList<School> schools = new ArrayList<>();
-
-        Scanner scanner = new Scanner(System.in);
-        int a = 0;
-        while(a < 1 || a > 3) {
-            System.out.println("<1> Change DataBase\n<2> Change XML File\n<3> Exit");
-            a = InputController.getIntFromString(scanner.nextLine());
-        }
-
+        int a = InputController.getIntFromString(2,
+                "<1> Change DataBase\n<2> Change XML File\n<3> Exit");
         if (a == 1){
             workWithDatabase();
             return;
@@ -32,26 +25,16 @@ public class Main {
         workWithXml();
     }
 
-    private static void workWithDatabase()
-    {
-        DataBase dataBase = new DataBase();
-        Scanner scanner = new Scanner(System.in);
-        int a = 0;
-        while(a < 1 || a > 3) {
-            System.out.println("<1> Add record\n<2> Change record\n<3> Edit record");
-            a = InputController.getIntFromString(scanner.nextLine());
-        }
+    private static void workWithDatabase() {
+        DataBase dataBase = new DataBase(Properties.userName, Properties.password, Properties.URL);
+        int a = InputController.getIntFromString(3,
+                "<1> Add record\n<2> Change record\n<3> Edit record");
         if(a == 1) {
             dataBase.addSchoolToDb();
             main(new String[]{"abc", "bcd"});
         }
         else if(a == 2) dataBase.changeSchoolInDB();
         else if(a == 3) dataBase.removeSchoolFromDB();
-
-
-
-
-
     }
 
     private static void workWithXml()
@@ -71,6 +54,9 @@ public class Main {
 
     public static class Properties{
         public static String FilePath;
+        public static String userName = "root";
+        public static String password = "1234";
+        public static String URL = "jdbc:mysql://localhost:3306/schooldb";
         public static int MaxValuesLength;
 
         public static void initialize(){
@@ -79,6 +65,9 @@ public class Main {
                 FileInputStream fis = new FileInputStream("./laba5.properties");
                 prop.load(fis);
                 FilePath = new String(prop.getProperty("filePath").getBytes("ISO8859-1"));
+                FilePath = new String(prop.getProperty("userName").getBytes("ISO8859-1"));
+                FilePath = new String(prop.getProperty("password").getBytes("ISO8859-1"));
+                FilePath = new String(prop.getProperty("URL").getBytes("ISO8859-1"));
                 String val = new String(prop.getProperty("maxLength").getBytes("ISO8859-1"));
                 MaxValuesLength =  Integer.parseInt(val);
             } catch (IOException e) {
