@@ -22,7 +22,7 @@ public class InputController {
         }
     }
 
-    public static int getIntFromString(String something) {
+    private static int getIntFromStringInner(String something) {
         String result;
         int length = something.length();
         StringBuilder resultBuilder = new StringBuilder();
@@ -34,6 +34,16 @@ public class InputController {
         }
         result = resultBuilder.toString();
         return Integer.parseInt(result);
+    }
+
+    public static int getIntFromString(int maxVal, String message){
+        int a = 0;
+        Scanner scanner = new Scanner(System.in);
+        while(a < 1 || a > maxVal) {
+            System.out.println(message);
+            a = InputController.getIntFromStringInner(scanner.nextLine());
+        }
+        return a;
     }
 
 }

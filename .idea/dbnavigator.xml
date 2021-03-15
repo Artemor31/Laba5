@@ -25,27 +25,35 @@
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
     <loaded-nodes>
-      <connection connection-id="c14863cb-8638-46dd-9eb5-87295e1ea8d9">
-        <schema name="schoolstest" object-types="table, index, dataset trigger, view, constraint, column" />
+      <connection connection-id="835ed6d3-2be6-4d1d-b8ec-1a143c27640a">
+        <schema name="schooldb" object-types="index, dataset trigger, view, column, constraint, table" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="88b27226-216c-40af-a132-b29ccb7a635a">
-      <console name="Connection" type="STANDARD" schema="world" session="Pool" />
+      <console name="Connection" type="STANDARD" schema="" session="Main" />
     </connection>
     <connection id="c14863cb-8638-46dd-9eb5-87295e1ea8d9">
-      <console name="newDB" type="STANDARD" schema="test" session="Main"><![CDATA[CREATE DATABASE SchoolsContext;]]></console>
+      <console name="newDBConnection" type="STANDARD" schema="" session="Main" />
+    </connection>
+    <connection id="1f1e012e-a268-46b1-ae06-2bbc40d61a90">
+      <console name="Connection 1" type="STANDARD" schema="mysql" session="Main" />
+    </connection>
+    <connection id="835ed6d3-2be6-4d1d-b8ec-1a143c27640a">
+      <console name="SchoolDB" type="STANDARD" schema="mysql" session="Main"><![CDATA[create DataBase SchoolDB;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files>
-      <object connection-id="c14863cb-8638-46dd-9eb5-87295e1ea8d9" object-ref="schemas/schoolstest/tables/schools" />
+      <object connection-id="835ed6d3-2be6-4d1d-b8ec-1a143c27640a" object-ref="schemas/schooldb/tables/schools" />
     </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="88b27226-216c-40af-a132-b29ccb7a635a" />
     <connection id="c14863cb-8638-46dd-9eb5-87295e1ea8d9" />
+    <connection id="1f1e012e-a268-46b1-ae06-2bbc40d61a90" />
+    <connection id="835ed6d3-2be6-4d1d-b8ec-1a143c27640a" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="c14863cb-8638-46dd-9eb5-87295e1ea8d9" dataset="schoolstest.schooltest1" active-filter-id="EMPTY_FILTER">
@@ -59,6 +67,13 @@
       </filter>
     </filter-actions>
     <filter-actions connection-id="88b27226-216c-40af-a132-b29ccb7a635a" dataset="world.city" active-filter-id="" />
+    <filter-actions connection-id="835ed6d3-2be6-4d1d-b8ec-1a143c27640a" dataset="sakila.actor" active-filter-id="" />
+    <filter-actions connection-id="835ed6d3-2be6-4d1d-b8ec-1a143c27640a" dataset="sys.sys_config" active-filter-id="" />
+    <filter-actions connection-id="835ed6d3-2be6-4d1d-b8ec-1a143c27640a" dataset="schooldb.schools" active-filter-id="EMPTY_FILTER">
+      <filter id="c6b91942-4450-48dc-909c-455da79c255c" name="1" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="id" operator="=" value="1" active="true" />
+      </filter>
+    </filter-actions>
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -170,7 +185,7 @@
           <object-name-filters />
         </object-filters>
       </connection>
-      <connection id="c14863cb-8638-46dd-9eb5-87295e1ea8d9" active="true">
+      <connection id="c14863cb-8638-46dd-9eb5-87295e1ea8d9" active="false">
         <database>
           <name value="newDBConnection" />
           <description value="" />
@@ -178,7 +193,7 @@
           <config-type value="BASIC" />
           <database-version value="8.0" />
           <driver-source value="EXTERNAL" />
-          <driver-library value="F:\Jaba\mysql-connector-java-8.0.23.jar" />
+          <driver-library value="C:\Users\bogun\Desktop\jaba\mysql-connector-java-8.0.23.jar" />
           <driver value="com.mysql.cj.jdbc.Driver" />
           <url-type value="DATABASE" />
           <host value="localhost" />
@@ -190,6 +205,174 @@
         </database>
         <properties>
           <auto-commit value="true" />
+        </properties>
+        <ssh-settings>
+          <active value="false" />
+          <proxy-host value="" />
+          <proxy-port value="22" />
+          <proxy-user value="" />
+          <deprecated-proxy-pwd value="" />
+          <auth-type value="PASSWORD" />
+          <key-file value="" />
+          <key-passphrase value="" />
+        </ssh-settings>
+        <ssl-settings>
+          <active value="false" />
+          <certificate-authority-file value="" />
+          <client-certificate-file value="" />
+          <client-key-file value="" />
+        </ssl-settings>
+        <details>
+          <charset value="UTF-8" />
+          <session-management value="true" />
+          <ddl-file-binding value="true" />
+          <database-logging value="false" />
+          <connect-automatically value="true" />
+          <restore-workspace value="true" />
+          <restore-workspace-deep value="true" />
+          <environment-type value="default" />
+          <connectivity-timeout value="5" />
+          <idle-time-to-disconnect value="30" />
+          <idle-time-to-disconnect-pool value="5" />
+          <credential-expiry-time value="10" />
+          <max-connection-pool-size value="7" />
+          <alternative-statement-delimiter value="" />
+        </details>
+        <object-filters hide-empty-schemas="false" hide-pseudo-columns="false">
+          <object-type-filter use-master-settings="true">
+            <object-type name="SCHEMA" enabled="true" />
+            <object-type name="USER" enabled="true" />
+            <object-type name="ROLE" enabled="true" />
+            <object-type name="PRIVILEGE" enabled="true" />
+            <object-type name="CHARSET" enabled="true" />
+            <object-type name="TABLE" enabled="true" />
+            <object-type name="VIEW" enabled="true" />
+            <object-type name="MATERIALIZED_VIEW" enabled="true" />
+            <object-type name="NESTED_TABLE" enabled="true" />
+            <object-type name="COLUMN" enabled="true" />
+            <object-type name="INDEX" enabled="true" />
+            <object-type name="CONSTRAINT" enabled="true" />
+            <object-type name="DATASET_TRIGGER" enabled="true" />
+            <object-type name="DATABASE_TRIGGER" enabled="true" />
+            <object-type name="SYNONYM" enabled="true" />
+            <object-type name="SEQUENCE" enabled="true" />
+            <object-type name="PROCEDURE" enabled="true" />
+            <object-type name="FUNCTION" enabled="true" />
+            <object-type name="PACKAGE" enabled="true" />
+            <object-type name="TYPE" enabled="true" />
+            <object-type name="TYPE_ATTRIBUTE" enabled="true" />
+            <object-type name="ARGUMENT" enabled="true" />
+            <object-type name="DIMENSION" enabled="true" />
+            <object-type name="CLUSTER" enabled="true" />
+            <object-type name="DBLINK" enabled="true" />
+          </object-type-filter>
+          <object-name-filters />
+        </object-filters>
+      </connection>
+      <connection id="1f1e012e-a268-46b1-ae06-2bbc40d61a90" active="false">
+        <database>
+          <name value="Connection 1" />
+          <description value="" />
+          <database-type value="MYSQL" />
+          <config-type value="BASIC" />
+          <database-version value="8.0" />
+          <driver-source value="EXTERNAL" />
+          <driver-library value="C:\Users\bogun\Desktop\jaba\mysql-connector-java-8.0.23.jar" />
+          <driver value="com.mysql.cj.jdbc.Driver" />
+          <url-type value="DATABASE" />
+          <host value="localhost" />
+          <port value="3306" />
+          <database value="mysql" />
+          <type value="USER_PASSWORD" />
+          <user value="root" />
+          <deprecated-pwd value="MTIzNA==" />
+        </database>
+        <properties>
+          <auto-commit value="false" />
+        </properties>
+        <ssh-settings>
+          <active value="false" />
+          <proxy-host value="" />
+          <proxy-port value="22" />
+          <proxy-user value="" />
+          <deprecated-proxy-pwd value="" />
+          <auth-type value="PASSWORD" />
+          <key-file value="" />
+          <key-passphrase value="" />
+        </ssh-settings>
+        <ssl-settings>
+          <active value="false" />
+          <certificate-authority-file value="" />
+          <client-certificate-file value="" />
+          <client-key-file value="" />
+        </ssl-settings>
+        <details>
+          <charset value="UTF-8" />
+          <session-management value="true" />
+          <ddl-file-binding value="true" />
+          <database-logging value="false" />
+          <connect-automatically value="true" />
+          <restore-workspace value="true" />
+          <restore-workspace-deep value="true" />
+          <environment-type value="default" />
+          <connectivity-timeout value="5" />
+          <idle-time-to-disconnect value="30" />
+          <idle-time-to-disconnect-pool value="5" />
+          <credential-expiry-time value="10" />
+          <max-connection-pool-size value="7" />
+          <alternative-statement-delimiter value="" />
+        </details>
+        <object-filters hide-empty-schemas="false" hide-pseudo-columns="false">
+          <object-type-filter use-master-settings="true">
+            <object-type name="SCHEMA" enabled="true" />
+            <object-type name="USER" enabled="true" />
+            <object-type name="ROLE" enabled="true" />
+            <object-type name="PRIVILEGE" enabled="true" />
+            <object-type name="CHARSET" enabled="true" />
+            <object-type name="TABLE" enabled="true" />
+            <object-type name="VIEW" enabled="true" />
+            <object-type name="MATERIALIZED_VIEW" enabled="true" />
+            <object-type name="NESTED_TABLE" enabled="true" />
+            <object-type name="COLUMN" enabled="true" />
+            <object-type name="INDEX" enabled="true" />
+            <object-type name="CONSTRAINT" enabled="true" />
+            <object-type name="DATASET_TRIGGER" enabled="true" />
+            <object-type name="DATABASE_TRIGGER" enabled="true" />
+            <object-type name="SYNONYM" enabled="true" />
+            <object-type name="SEQUENCE" enabled="true" />
+            <object-type name="PROCEDURE" enabled="true" />
+            <object-type name="FUNCTION" enabled="true" />
+            <object-type name="PACKAGE" enabled="true" />
+            <object-type name="TYPE" enabled="true" />
+            <object-type name="TYPE_ATTRIBUTE" enabled="true" />
+            <object-type name="ARGUMENT" enabled="true" />
+            <object-type name="DIMENSION" enabled="true" />
+            <object-type name="CLUSTER" enabled="true" />
+            <object-type name="DBLINK" enabled="true" />
+          </object-type-filter>
+          <object-name-filters />
+        </object-filters>
+      </connection>
+      <connection id="835ed6d3-2be6-4d1d-b8ec-1a143c27640a" active="true">
+        <database>
+          <name value="SchoolDB" />
+          <description value="" />
+          <database-type value="MYSQL" />
+          <config-type value="BASIC" />
+          <database-version value="8.0" />
+          <driver-source value="EXTERNAL" />
+          <driver-library value="C:\Users\bogun\Desktop\jaba\mysql-connector-java-8.0.23.jar" />
+          <driver value="com.mysql.cj.jdbc.Driver" />
+          <url-type value="DATABASE" />
+          <host value="localhost" />
+          <port value="3306" />
+          <database value="mysql" />
+          <type value="USER_PASSWORD" />
+          <user value="root" />
+          <deprecated-pwd value="MTIzNA==" />
+        </database>
+        <properties>
+          <auto-commit value="false" />
         </properties>
         <ssh-settings>
           <active value="false" />
