@@ -3,6 +3,7 @@ package ru.bstu.it32.bogunov.lab5;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
@@ -11,25 +12,39 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
-import java.util.List;
+import java.util.ArrayList;
 
 public class DOMWriter{
-    public static void write(String path, List<School> schoolList) {
+    public static void write(String path, ArrayList<School> schools) {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder;
         try {
             builder = factory.newDocumentBuilder();
             Document doc = builder.newDocument();
-            Element rootElement = doc.createElement("schools");
+            Element rootElement = doc.createElement("school");
             doc.appendChild(rootElement);
-            for (School school : schoolList) {
-                rootElement.appendChild(getSchool(doc,
-                        school.getRegion(),
-                        school.getCity(),
-                        school.getStreet(),
-                        school.getName(),
-                        school.getDirectorName()));
-            }
+
+            // добавляем первый дочерний элемент к корневому
+            rootElement.appendChild(getSchool(doc, "1",
+                    "Belgorodskaya",
+                    "Belgorod",
+                    "Koneva",
+                    "School49",
+                    "Lamanova"));
+            rootElement.appendChild(getSchool(doc, "2",
+                    "Belgorodskaya",
+                    "Belgorod",
+                    "Koroleva",
+                    "School19",
+                    "Petrova"));
+            rootElement.appendChild(getSchool(doc, "3",
+                    "Belgorodskaya",
+                    "Belgorod",
+                    "Gybkina",
+                    "School43",
+                    "Ivanova"));
+
+
 
             doc.getDocumentElement().normalize();
             //создаем объект TransformerFactory для преобразования документа в файл
@@ -51,11 +66,13 @@ public class DOMWriter{
             e.printStackTrace();
         }
     }
+
     // метод для создания нового узла XML-файла
-    private static Node getSchool(Document doc, String region, String city, String street, String name, String directorName) {
+    private static Node getSchool(Document doc, String id, String region, String city, String street, String name, String directorName) {
 
         Element school = doc.createElement("school");
-        school.setAttribute("region", region);
+        school.setAttribute("id", id);
+        school.appendChild(getSchoolElements(doc, school, "region", region));
         school.appendChild(getSchoolElements(doc, school, "city", city));
         school.appendChild(getSchoolElements(doc, school, "street", street));
         school.appendChild(getSchoolElements(doc, school, "name", name));

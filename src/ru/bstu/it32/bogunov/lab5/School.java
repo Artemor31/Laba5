@@ -31,5 +31,13 @@ public class School {
         return directorName;
     }
 
+    public static School addSchoolFromConsole(){
+        return new School(InputController.getStrFromCon("Enter Region:"),
+                InputController.getStrFromCon("Enter City:"),
+                InputController.getStrFromCon("Enter Street:"),
+                InputController.getStrFromCon("Enter Name:"),
+                InputController.getStrFromCon("Enter Director:"));
+    }
+
 }
 
