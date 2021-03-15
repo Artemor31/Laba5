@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<school>
+    <school id="1">
+        <region>Belgorodskaya</region>
+        <city>Belgorod</city>
+        <street>Koneva</street>
+        <name>School49</name>
+        <directorName>Lamanova</directorName>
+    </school>
+    <school id="2">
+        <region>Belgorodskaya</region>
+        <city>Belgorod</city>
+        <street>Koroleva</street>
+        <name>School19</name>
+        <directorName>Petrova</directorName>
+    </school>
+    <school id="3">
+        <region>Belgorodskaya</region>
+        <city>Belgorod</city>
+        <street>Gybkina</street>
+        <name>School43</name>
+        <directorName>Ivanova</directorName>
+    </school>
+</school>
