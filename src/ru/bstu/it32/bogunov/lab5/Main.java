@@ -3,19 +3,19 @@ package ru.bstu.it32.bogunov.lab5;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 //TODO
 // добавление, удаление, редактирование записей
 // парс из бд в XML и обратно
-// поиск по параметрам (можно несколько)
 // тексты ошибок в пропертях
 
 public class Main {
     public static void main(String[] args) {
 
         Properties.initialize();
-        ArrayList<School> schools = new ArrayList<>();
+        List<School> schools = new ArrayList<>();
         int a = InputController.getIntFromString(2,
                 "<1> Change DataBase\n<2> Change XML File\n<3> Exit");
         if (a == 1){
@@ -27,14 +27,16 @@ public class Main {
 
     private static void workWithDatabase() {
         DataBase dataBase = new DataBase(Properties.userName, Properties.password, Properties.URL);
+
         int a = InputController.getIntFromString(3,
-                "<1> Add record\n<2> Change record\n<3> Edit record");
-        if(a == 1) {
+                "<1> Add record\n<2> Change record\n<3> Remove record");
+        if(a == 1)
             dataBase.addSchoolToDb();
-            main(new String[]{"abc", "bcd"});
-        }
-        else if(a == 2) dataBase.changeSchoolInDB();
-        else if(a == 3) dataBase.removeSchoolFromDB();
+        else if(a == 2)
+            dataBase.changeSchoolInDB();
+        else if(a == 3)
+            dataBase.removeSchoolFromDB();
+        main(new String[]{"abc", "bcd"});
     }
 
     private static void workWithXml()
@@ -54,9 +56,9 @@ public class Main {
 
     public static class Properties{
         public static String FilePath;
-        public static String userName = "root";
-        public static String password = "1234";
-        public static String URL = "jdbc:mysql://localhost:3306/schooldb";
+        public static String userName;
+        public static String password;
+        public static String URL;
         public static int MaxValuesLength;
 
         public static void initialize(){
@@ -65,9 +67,9 @@ public class Main {
                 FileInputStream fis = new FileInputStream("./laba5.properties");
                 prop.load(fis);
                 FilePath = new String(prop.getProperty("filePath").getBytes("ISO8859-1"));
-                FilePath = new String(prop.getProperty("userName").getBytes("ISO8859-1"));
-                FilePath = new String(prop.getProperty("password").getBytes("ISO8859-1"));
-                FilePath = new String(prop.getProperty("URL").getBytes("ISO8859-1"));
+                userName = new String(prop.getProperty("userName").getBytes("ISO8859-1"));
+                password = new String(prop.getProperty("password").getBytes("ISO8859-1"));
+                URL = new String(prop.getProperty("URL").getBytes("ISO8859-1"));
                 String val = new String(prop.getProperty("maxLength").getBytes("ISO8859-1"));
                 MaxValuesLength =  Integer.parseInt(val);
             } catch (IOException e) {

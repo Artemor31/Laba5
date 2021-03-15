@@ -26,7 +26,7 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="c14863cb-8638-46dd-9eb5-87295e1ea8d9">
-        <schema name="schoolstest" object-types="column, view, dataset trigger, index, table, constraint" />
+        <schema name="schoolstest" object-types="dataset trigger, view, index, column, constraint, procedure, function, table" />
       </connection>
     </loaded-nodes>
   </component>
@@ -36,6 +36,7 @@
     </connection>
     <connection id="c14863cb-8638-46dd-9eb5-87295e1ea8d9">
       <console name="newDB" type="STANDARD" schema="test" session="Main"><![CDATA[CREATE DATABASE SchoolsContext;]]></console>
+      <console name="newDBConnection" type="STANDARD" schema="newdb" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
@@ -183,7 +184,7 @@
           <url-type value="DATABASE" />
           <host value="localhost" />
           <port value="3306" />
-          <database value="newdb" />
+          <database value="schoolstest" />
           <type value="USER_PASSWORD" />
           <user value="root" />
           <deprecated-pwd value="MTIzNA==" />
