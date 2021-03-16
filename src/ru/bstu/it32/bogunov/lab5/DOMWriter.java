@@ -25,24 +25,28 @@ public class DOMWriter{
             doc.appendChild(rootElement);
 
             // добавляем первый дочерний элемент к корневому
-            rootElement.appendChild(getSchool(doc, "1",
+            rootElement.appendChild(getSchool(doc,
                     "Belgorodskaya",
                     "Belgorod",
                     "Koneva",
                     "School49",
                     "Lamanova"));
-            rootElement.appendChild(getSchool(doc, "2",
+            rootElement.appendChild(getSchool(doc,
                     "Belgorodskaya",
                     "Belgorod",
                     "Koroleva",
                     "School19",
                     "Petrova"));
-            rootElement.appendChild(getSchool(doc, "3",
+            rootElement.appendChild(getSchool(doc,
                     "Belgorodskaya",
                     "Belgorod",
                     "Gybkina",
                     "School43",
                     "Ivanova"));
+            for(School school : schools){
+                rootElement.appendChild(getSchool(doc, school.getRegion(), school.getCity(),
+                school.getStreet(), school.getName(), school.getDirectorName()));
+            }
 
 
 
@@ -68,10 +72,9 @@ public class DOMWriter{
     }
 
     // метод для создания нового узла XML-файла
-    private static Node getSchool(Document doc, String id, String region, String city, String street, String name, String directorName) {
+    private static Node getSchool(Document doc, String region, String city, String street, String name, String directorName) {
 
         Element school = doc.createElement("school");
-        school.setAttribute("id", id);
         school.appendChild(getSchoolElements(doc, school, "region", region));
         school.appendChild(getSchoolElements(doc, school, "city", city));
         school.appendChild(getSchoolElements(doc, school, "street", street));

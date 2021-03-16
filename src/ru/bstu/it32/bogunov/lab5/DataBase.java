@@ -17,8 +17,7 @@ public class DataBase {
         DataBase.URL = URL;
     }
 
-    public static Statement connect() {
-
+    public static Statement getConnectStatement() {
         Statement statement = null;
         Connection connection;
 
@@ -43,9 +42,8 @@ public class DataBase {
         return statement;
     }
 
-    public void addSchoolToDb() {
-        School school = School.addSchoolFromConsole();
-        Statement statement = DataBase.connect();
+    public void addSchoolToDb(School school) {
+        Statement statement = DataBase.getConnectStatement();
         if(statement == null) {
             System.out.println("Error to return statement");
             return;
@@ -64,7 +62,7 @@ public class DataBase {
     }
 
     public void printAll(){
-        Statement statement = DataBase.connect();
+        Statement statement = DataBase.getConnectStatement();
         ResultSet resultSet = null;
         try {
             resultSet = statement.executeQuery("select * from schools");
@@ -85,7 +83,7 @@ public class DataBase {
         int a;
         Request request = new Request();
         Scanner scanner = new Scanner(System.in);
-        Statement statement = DataBase.connect();
+        Statement statement = DataBase.getConnectStatement();
         ResultSet resultSet;
         ArrayList<Integer> ids = new ArrayList<>();
         do {
@@ -143,7 +141,7 @@ public class DataBase {
     public void changeSchoolInDB() {
         List<Integer> ids = findEntityInDB();
         Scanner scanner = new Scanner(System.in);
-        Statement statement = DataBase.connect();
+        Statement statement = DataBase.getConnectStatement();
         int a;
 
         do {
@@ -155,32 +153,32 @@ public class DataBase {
                             """);
             switch (a) {
                 case 1 -> {
-                    System.out.println("Enter new region: ");
                     for(Integer i : ids){
+                        System.out.println("Enter new region for id: " + i);
                         updateRequest(statement, i, "region", scanner.nextLine());
                     }
                 }
                 case 2 -> {
-                    System.out.println("Enter new city: ");
                     for(Integer i : ids){
+                        System.out.println("Enter new city for id: " + i);
                         updateRequest(statement, i, "city", scanner.nextLine());
                     }
                 }
                 case 3 -> {
-                    System.out.println("Enter new street: ");
                     for(Integer i : ids){
+                        System.out.println("Enter new street for id: " + i);
                         updateRequest(statement, i, "street", scanner.nextLine());
                     }
                 }
                 case 4 -> {
-                    System.out.println("Enter new name: ");
                     for(Integer i : ids){
+                        System.out.println("Enter new name for id: " + i);
                         updateRequest(statement, i, "name", scanner.nextLine());
                     }
                 }
                 case 5 -> {
-                    System.out.println("Enter new director: ");
                     for(Integer i : ids){
+                        System.out.println("Enter new director name for id: " + i);
                         updateRequest(statement, i, "directorName", scanner.nextLine());
                     }
                 }
@@ -201,12 +199,12 @@ public class DataBase {
 
     public void removeSchoolFromDB(){
         List<Integer> ids = findEntityInDB();
-        Statement statement = DataBase.connect();
+        Statement statement = DataBase.getConnectStatement();
 
         for(int id : ids){
             try {
-                statement.executeUpdate("delete from schools" +
-                                            "where id = 1");
+                statement.executeUpdate("delete from schools " +
+                                            "where id = " + id);
             } catch (SQLException e) {
                 System.out.println("Can't delete record");
                 e.printStackTrace();

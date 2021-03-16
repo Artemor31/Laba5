@@ -14,16 +14,19 @@ public class SAXReader {
             SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser saxParser = factory.newSAXParser();
             DefaultHandler handler = new DefaultHandler() {
-                String tag = "";
 
+                String tag = "";
                 @Override
                 public void startElement(String uri, String localName, String qName, Attributes attributes) {
-                    tag = qName;
+                    if (qName.equalsIgnoreCase("school")){
+                        System.out.println("\nЭлемент "+qName);
+                        tag = qName;
+                    }
                 }
                 // Метод вызывается когда SAXParser считывает текст между тегами
                 @Override
                 public void characters(char[] ch, int start, int length) {
-                    String[] str = new String[5];
+                    String[] str = new String[] {"", "", "", "", ""};
 
                     if (tag.equalsIgnoreCase("region")) {
                         str[0] = new String(ch, start, length);
@@ -40,15 +43,16 @@ public class SAXReader {
                     else if (tag.equalsIgnoreCase("directorName")) {
                         str[4] = new String(ch, start, length);
                     }
-                    School school = new School(str[0], str[1], str[2], str[3], str[4]);
-                    schools.add(school);
+                    if(str[0] != "" && str[1] != "" && str[2] != "" && str[3] != "" && str[4] != "") {
+                        School school = new School(str[0], str[1], str[2], str[3], str[4]);
+                        schools.add(school);
+                    }
                 }
 
                 @Override
                 public void endElement(String uri, String localName, String qName) {tag = "";}
             };
             saxParser.parse(path, handler);
-
         } catch (Exception e) {
             System.out.println("Nice file, awesome text");
             e.printStackTrace();
