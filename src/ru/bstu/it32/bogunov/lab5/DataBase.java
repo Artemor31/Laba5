@@ -16,6 +16,7 @@ public class DataBase {
         DataBase.password = password;
         DataBase.URL = URL;
     }
+
     public static Statement connect() {
 
         Statement statement = null;
@@ -42,8 +43,7 @@ public class DataBase {
         return statement;
     }
 
-    public void addSchoolToDb()
-    {
+    public void addSchoolToDb() {
         School school = School.addSchoolFromConsole();
         Statement statement = DataBase.connect();
         if(statement == null) {
@@ -63,76 +63,160 @@ public class DataBase {
         }
     }
 
-    public void findEntityInDB() {
-        int a = 0;
-        Request request = new Request();
-        Scanner scanner = new Scanner(System.in);
-        do{
-            a = InputController.getIntFromString(7,
-                    "<1>Enter id  <2>Enter region\n<3>Enter city" +
-                            "  <4>Enter street\n<5>Enter name  <6>Enter director\n<7>Start search\n");
-            switch (a){
-                case 1:
-                    String id = scanner.nextLine();
-                    request.idReq = " id =" + id;
-                    break;
-                case 2:
-                    String region = scanner.nextLine();
-                    request.idReq = " region =" + region;
-                    break;
-                case 3:
-                    String city = scanner.nextLine();
-                    request.idReq = " city =" + city;
-                    break;
-                case 4:
-                    String street = scanner.nextLine();
-                    request.idReq = " street =" + street;
-                    break;
-                case 5:
-                    String name = scanner.nextLine();
-                    request.idReq = " name =" + name;
-                    break;
-                case 6:
-                    String director = scanner.nextLine();
-                    request.idReq = " directorName =" + director;
-                    break;
-            }
-        }while(a != 7);
+    public void printAll(){
         Statement statement = DataBase.connect();
         ResultSet resultSet = null;
         try {
-            resultSet = statement.executeQuery(request.buildRequest());
+            resultSet = statement.executeQuery("select * from schools");
 
-            List<String> lines = new ArrayList<>();
             while (resultSet.next()) {
-                lines.add(resultSet.getString(2));
-            }
-            for (String line : lines) {
-                System.out.println(line);
+                System.out.println(resultSet.getInt(1));
+                System.out.println(resultSet.getString(2));
+                System.out.println(resultSet.getString(3));
+                System.out.println(resultSet.getString(4));
+                System.out.println("---------------------------------");
             }
         }catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void changeSchoolInDB() {
+    private List<Integer> findEntityInDB() {
+        int a;
+        Request request = new Request();
+        Scanner scanner = new Scanner(System.in);
+        Statement statement = DataBase.connect();
+        ResultSet resultSet;
+        ArrayList<Integer> ids = new ArrayList<>();
+        do {
+            do {
+                a = InputController.getIntFromString(7,
+                        """
+                                <1>Enter id  <2>Enter region
+                                <3>Enter city  <4>Enter street
+                                <5>Enter name  <6>Enter director
+                                <7>Start search
+                                """);
+                switch (a) {
+                    case 1 -> {
+                        String id = scanner.nextLine();
+                        request.idReq = " id = '" + id + "'";
+                    }
+                    case 2 -> {
+                        String region = scanner.nextLine();
+                        request.regReq = " region = '" + region + "'";
+                    }
+                    case 3 -> {
+                        String city = scanner.nextLine();
+                        request.cityReq = " city = '" + city + "'";
+                    }
+                    case 4 -> {
+                        String street = scanner.nextLine();
+                        request.streetReq = " street = '" + street + "'";
+                    }
+                    case 5 -> {
+                        String name = scanner.nextLine();
+                        request.nameReq = " name = '" + name + "'";
+                    }
+                    case 6 -> {
+                        String director = scanner.nextLine();
+                        request.directorReq = " directorName = '" + director + "'";
+                    }
+                }
+            } while (a != 7);
+            try {
+                String req = request.buildRequest();
+                resultSet = statement.executeQuery(req);
 
+                while (resultSet.next()) {
+                    ids.add(resultSet.getInt(1));
+                }
+
+            } catch (SQLException e) {
+                System.out.println("Cant find this entity, try again");
+                Main.main(new String[]{"abc", "bcd"});
+            }
+        } while (ids.size() == 0);
+        return ids;
+    }
+
+    public void changeSchoolInDB() {
+        List<Integer> ids = findEntityInDB();
+        Scanner scanner = new Scanner(System.in);
+        Statement statement = DataBase.connect();
+        int a;
+
+        do {
+            a = InputController.getIntFromString(7,
+                    """
+                            <1>Change region <2>Change city  
+                            <3>Change street <4>Change name  
+                            <5>Change director <6>Accept changes
+                            """);
+            switch (a) {
+                case 1 -> {
+                    System.out.println("Enter new region: ");
+                    for(Integer i : ids){
+                        updateRequest(statement, i, "region", scanner.nextLine());
+                    }
+                }
+                case 2 -> {
+                    System.out.println("Enter new city: ");
+                    for(Integer i : ids){
+                        updateRequest(statement, i, "city", scanner.nextLine());
+                    }
+                }
+                case 3 -> {
+                    System.out.println("Enter new street: ");
+                    for(Integer i : ids){
+                        updateRequest(statement, i, "street", scanner.nextLine());
+                    }
+                }
+                case 4 -> {
+                    System.out.println("Enter new name: ");
+                    for(Integer i : ids){
+                        updateRequest(statement, i, "name", scanner.nextLine());
+                    }
+                }
+                case 5 -> {
+                    System.out.println("Enter new director: ");
+                    for(Integer i : ids){
+                        updateRequest(statement, i, "directorName", scanner.nextLine());
+                    }
+                }
+            }
+        } while (a != 6);
+        System.out.println("Value successfully changed");
+    }
+
+    private void updateRequest(Statement statement, int id, String column, String newValues){
+        try {
+            statement.executeUpdate(" UPDATE schools " +
+                    "SET " + column + " = '" + newValues + "' " +
+                    "WHERE id = '" + id + "'");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void removeSchoolFromDB(){
+        List<Integer> ids = findEntityInDB();
+        Statement statement = DataBase.connect();
 
-
-    }
-
-    private void readUserSchool(int a){
-        School school;
-        switch (a){
+        for(int id : ids){
+            try {
+                statement.executeUpdate("delete from schools" +
+                                            "where id = 1");
+            } catch (SQLException e) {
+                System.out.println("Can't delete record");
+                e.printStackTrace();
+            }
         }
     }
 
     private class Request{
         public boolean isFirst = true;
-        public String startReq = "select * from schooldb.schools where";
+        public String startReq = "select * from schools where ";
         public String idReq = "";
         public String regReq = "";
         public String cityReq = "";
@@ -154,7 +238,7 @@ public class DataBase {
                 startReq += req;
                 isFirst = false;
             }
-            else if(!req.equals("") && !isFirst) {
+            else if(!req.equals("")) {
                 startReq += " and " + req;
             }
         }
