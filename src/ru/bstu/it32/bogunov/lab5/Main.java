@@ -13,6 +13,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Properties.initialize();
+        ArrayList<School> schools = new ArrayList<>();
         DataBase dataBase = new DataBase(Properties.userName, Properties.password, Properties.URL);
 
         int a = InputController.getIntFromString(3,
@@ -27,37 +28,31 @@ public class Main {
     }
 
     private static void workWithDatabase(DataBase dataBase) {
+        int a = InputController.getIntFromString(5,
+                "<1> Add record\n<2> Change record\n<3> Remove record\n<4>Parse Database to Xml\n<5>Exit");
 
-        int a = InputController.getIntFromString(3,
-                "<1> Add record\n<2> Change record\n<3> Remove record");
-        if(a == 1){
-            School school = School.addSchoolFromConsole();
-            dataBase.addSchoolToDb(school);
+        switch (a) {
+            case 1 -> dataBase.addSchoolToDb(School.addSchoolFromConsole());
+            case 2 -> dataBase.changeSchoolInDB();
+            case 3 -> dataBase.removeSchoolFromDB();
+            case 4 -> dataBase.parseDatabaseToXml();
         }
-        else if(a == 2)
-            dataBase.changeSchoolInDB();
-        else if(a == 3)
-            dataBase.removeSchoolFromDB();
         main(new String[]{"abc", "bcd"});
     }
 
     private static void workWithXml(DataBase dataBase, String path) {
-
         XmlEditor xmlEditor = new XmlEditor();
-        ArrayList<School> addedSchools = new ArrayList<>();
+        int a = InputController.getIntFromString(5,
+                "<1> Add record\n<2> Change record\n<3> Remove record\n<4>Parse Xml to Database\n<5>Exit");
+        ArrayList<School> schools = xmlEditor.readXml(path);
 
-        addedSchools.add(new School("регион1", "город1", "улица1", "имя1", "директор1"));
-        addedSchools.add(new School("регион1", "город1", "улица1", "имя1", "директор1"));
-        addedSchools.add(new School("регион1", "город1", "улица1", "имя1", "директор1"));
-        addedSchools.add(new School("регион1", "город1", "улица1", "имя1", "директор1"));
-
-        printSchoolsList(addedSchools);
-        xmlEditor.writeToXml(Properties.FilePath, addedSchools);
-
-        List<School> schools = xmlEditor.readXml(path);
-        System.out.println("Parsing...");
+        switch (a){
+            case 1 -> schools.add(School.addSchoolFromConsole());
+            case 2 -> xmlEditor.cha
+        }
+        schools = xmlEditor.readXml(path);
+        printSchoolsList(schools);
         xmlEditor.parseFromXmlToDatabase(schools, dataBase);
-        System.out.println("ready");
     }
 
     private static void printSchoolsList(ArrayList<School> schools) {

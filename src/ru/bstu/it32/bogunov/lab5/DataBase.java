@@ -61,6 +61,11 @@ public class DataBase {
         }
     }
 
+    public void parseDatabaseToXml(){
+        System.out.println("Parse db to Xml");
+    }
+
+
     public void printAll(){
         Statement statement = DataBase.getConnectStatement();
         ResultSet resultSet = null;
