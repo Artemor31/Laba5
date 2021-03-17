@@ -7,41 +7,52 @@ import java.util.List;
 import java.util.Scanner;
 
 //TODO
-// добавление, удаление, редактирование записей
 // парс из бд в XML и обратно
 // тексты ошибок в пропертях
 
 public class Main {
     public static void main(String[] args) {
-
         Properties.initialize();
-        List<School> schools = new ArrayList<>();
-        int a = InputController.getIntFromString(2,
-                "<1> Change DataBase\n<2> Change XML File\n<3> Exit");
-        if (a == 1){
-            workWithDatabase();
-            return;
-        }
-        workWithXml();
-    }
-
-    private static void workWithDatabase() {
+        ArrayList<School> schools = new ArrayList<>();
         DataBase dataBase = new DataBase(Properties.userName, Properties.password, Properties.URL);
 
         int a = InputController.getIntFromString(3,
-                "<1> Add record\n<2> Change record\n<3> Remove record");
-        if(a == 1)
-            dataBase.addSchoolToDb();
-        else if(a == 2)
-            dataBase.changeSchoolInDB();
-        else if(a == 3)
-            dataBase.removeSchoolFromDB();
+                "<1> Change DataBase\n<2> Change XML File\n<3> Exit");
+        if (a == 1){
+            workWithDatabase(dataBase);
+            return;
+        }
+        if (a == 2){
+            workWithXml(dataBase, Properties.FilePath);
+        }
+    }
+
+    private static void workWithDatabase(DataBase dataBase) {
+        int a = InputController.getIntFromString(5,
+                "<1> Add record\n<2> Change record\n<3> Remove record\n<4>Parse Database to Xml\n<5>Exit");
+
+        switch (a) {
+            case 1 -> dataBase.addSchoolToDb(School.addSchoolFromConsole());
+            case 2 -> dataBase.changeSchoolInDB();
+            case 3 -> dataBase.removeSchoolFromDB();
+            case 4 -> dataBase.parseDatabaseToXml();
+        }
         main(new String[]{"abc", "bcd"});
     }
 
-    private static void workWithXml()
-    {
+    private static void workWithXml(DataBase dataBase, String path) {
+        XmlEditor xmlEditor = new XmlEditor();
+        int a = InputController.getIntFromString(5,
+                "<1> Add record\n<2> Change record\n<3> Remove record\n<4>Parse Xml to Database\n<5>Exit");
+        ArrayList<School> schools = xmlEditor.readXml(path);
 
+        switch (a){
+            case 1 -> schools.add(School.addSchoolFromConsole());
+            case 2 -> xmlEditor.cha
+        }
+        schools = xmlEditor.readXml(path);
+        printSchoolsList(schools);
+        xmlEditor.parseFromXmlToDatabase(schools, dataBase);
     }
 
     private static void printSchoolsList(ArrayList<School> schools) {

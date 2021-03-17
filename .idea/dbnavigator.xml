@@ -26,7 +26,7 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="c14863cb-8638-46dd-9eb5-87295e1ea8d9">
-        <schema name="schoolstest" object-types="dataset trigger, view, index, column, constraint, procedure, function, table" />
+        <schema name="schooldb" object-types="table, column, constraint, view, procedure, dataset trigger, index, function" />
       </connection>
     </loaded-nodes>
   </component>
@@ -41,7 +41,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files>
-      <object connection-id="c14863cb-8638-46dd-9eb5-87295e1ea8d9" object-ref="schemas/schoolstest/tables/schools" />
+      <object connection-id="c14863cb-8638-46dd-9eb5-87295e1ea8d9" object-ref="schemas/schooldb/tables/schools" />
     </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
@@ -49,6 +49,11 @@
     <connection id="c14863cb-8638-46dd-9eb5-87295e1ea8d9" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="c14863cb-8638-46dd-9eb5-87295e1ea8d9" dataset="schooldb.schools" active-filter-id="EMPTY_FILTER">
+      <filter id="28013ce1-58d8-4d66-950b-57aec550bb65" name="1" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="id" operator="=" value="1" active="true" />
+      </filter>
+    </filter-actions>
     <filter-actions connection-id="c14863cb-8638-46dd-9eb5-87295e1ea8d9" dataset="schoolstest.schooltest1" active-filter-id="EMPTY_FILTER">
       <filter id="a1d877fd-e18c-473a-b131-fccbcdf5348c" name="1" temporary="false" custom-name="false" type="basic" join-type="AND">
         <condition column="id" operator="=" value="1" active="true" />
@@ -179,12 +184,12 @@
           <config-type value="BASIC" />
           <database-version value="8.0" />
           <driver-source value="EXTERNAL" />
-          <driver-library value="F:\Jaba\mysql-connector-java-8.0.23.jar" />
+          <driver-library value="C:\Users\bogun\Desktop\jaba\mysql-connector-java-8.0.23.jar" />
           <driver value="com.mysql.cj.jdbc.Driver" />
           <url-type value="DATABASE" />
           <host value="localhost" />
           <port value="3306" />
-          <database value="schoolstest" />
+          <database value="schooldb" />
           <type value="USER_PASSWORD" />
           <user value="root" />
           <deprecated-pwd value="MTIzNA==" />
