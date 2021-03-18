@@ -10,43 +10,22 @@
     <school>
         <region>Belgorodskaya</region>
         <city>Belgorod</city>
-        <street>Koroleva</street>
-        <name>School19</name>
-        <directorName>Petrova</directorName>
-    </school>
-    <school>
-        <region>Belgorodskaya</region>
-        <city>Belgorod</city>
         <street>Gybkina</street>
         <name>School43</name>
         <directorName>Ivanova</directorName>
     </school>
     <school>
-        <region>регион1</region>
-        <city>город1</city>
-        <street>улица1</street>
-        <name>имя1</name>
-        <directorName>директор1</directorName>
+        <region>reg1</region>
+        <city>cc</city>
+        <street>w</street>
+        <name>w</name>
+        <directorName>w</directorName>
     </school>
     <school>
-        <region>регион1</region>
-        <city>город1</city>
-        <street>улица1</street>
-        <name>имя1</name>
-        <directorName>директор1</directorName>
-    </school>
-    <school>
-        <region>регион1</region>
-        <city>город1</city>
-        <street>улица1</street>
-        <name>имя1</name>
-        <directorName>директор1</directorName>
-    </school>
-    <school>
-        <region>регион1</region>
-        <city>город1</city>
-        <street>улица1</street>
-        <name>имя1</name>
-        <directorName>директор1</directorName>
+        <region>reg1</region>
+        <city>cc</city>
+        <street>s</street>
+        <name>s</name>
+        <directorName>s</directorName>
     </school>
 </school>

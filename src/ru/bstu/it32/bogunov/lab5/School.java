@@ -1,5 +1,6 @@
 package ru.bstu.it32.bogunov.lab5;
 
+
 public class School {
     private String region;
     private String city;
@@ -38,6 +39,5 @@ public class School {
                 InputController.getStrFromCon("Enter Name:"),
                 InputController.getStrFromCon("Enter Director:"));
     }
-
 }
 

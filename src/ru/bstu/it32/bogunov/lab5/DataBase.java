@@ -27,7 +27,6 @@ public class DataBase {
         try{
             connection = DriverManager.getConnection(URL, userName, password);
             statement = connection.createStatement();
-
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS Schools( " +
                     "id int auto_increment primary key," +
                     "region varchar(30) not null," +
@@ -35,10 +34,7 @@ public class DataBase {
                     "street varchar(30) not null," +
                     "name varchar(30) not null," +
                     "directorName varchar(30) not null)");
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
+        } catch (SQLException ex) { ex.printStackTrace(); }
         return statement;
     }
 
@@ -56,32 +52,34 @@ public class DataBase {
                     "', '" + school.getName() +
                     "', '" + school.getDirectorName() + "')");
         } catch (SQLException e) {
-            System.out.println("Error to EXECUTE statement");
+            System.out.println(Main.Properties.SQL_ERROR);
             e.printStackTrace();
         }
+        System.out.println("Record successfully added");
     }
 
-    public void parseDatabaseToXml(){
-        System.out.println("Parse db to Xml");
-    }
-
-
-    public void printAll(){
+    public ArrayList<School> parseDatabaseToXml(){
+        var schools = new ArrayList<School>();
         Statement statement = DataBase.getConnectStatement();
-        ResultSet resultSet = null;
+        ResultSet resultSet;
+
         try {
             resultSet = statement.executeQuery("select * from schools");
 
             while (resultSet.next()) {
-                System.out.println(resultSet.getInt(1));
-                System.out.println(resultSet.getString(2));
-                System.out.println(resultSet.getString(3));
-                System.out.println(resultSet.getString(4));
-                System.out.println("---------------------------------");
+                schools.add(new School(
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getString(4),
+                        resultSet.getString(5),
+                        resultSet.getString(6)));
             }
         }catch (SQLException e) {
+            System.out.println(Main.Properties.SQL_ERROR);
             e.printStackTrace();
         }
+        System.out.println("Table successfully parsed");
+        return schools;
     }
 
     private List<Integer> findEntityInDB() {
@@ -95,7 +93,7 @@ public class DataBase {
             do {
                 a = InputController.getIntFromString(7,
                         """
-                                <1>Enter id  <2>Enter region
+                                <1>Enter id    <2>Enter region
                                 <3>Enter city  <4>Enter street
                                 <5>Enter name  <6>Enter director
                                 <7>Start search
@@ -136,8 +134,8 @@ public class DataBase {
                 }
 
             } catch (SQLException e) {
-                System.out.println("Cant find this entity, try again");
-                Main.main(new String[]{"abc", "bcd"});
+                System.out.println(Main.Properties.ENTITY_ERROR);
+                Main.main(new String[]{"bcd"});
             }
         } while (ids.size() == 0);
         return ids;
@@ -150,7 +148,7 @@ public class DataBase {
         int a;
 
         do {
-            a = InputController.getIntFromString(7,
+            a = InputController.getIntFromString(6,
                     """
                             <1>Change region <2>Change city  
                             <3>Change street <4>Change name  
@@ -198,7 +196,7 @@ public class DataBase {
                     "SET " + column + " = '" + newValues + "' " +
                     "WHERE id = '" + id + "'");
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println(Main.Properties.SQL_ERROR);
         }
     }
 
@@ -211,13 +209,15 @@ public class DataBase {
                 statement.executeUpdate("delete from schools " +
                                             "where id = " + id);
             } catch (SQLException e) {
-                System.out.println("Can't delete record");
+                System.out.println(Main.Properties.ENTITY_ERROR);
                 e.printStackTrace();
             }
         }
+        System.out.println("Entities successfully removed");
     }
 
-    private class Request{
+
+    private static class Request{
         public boolean isFirst = true;
         public String startReq = "select * from schools where ";
         public String idReq = "";
@@ -236,6 +236,7 @@ public class DataBase {
             addReq(directorReq);
             return startReq;
         }
+
         private void addReq(String req){
             if(!req.equals("") && isFirst) {
                 startReq += req;
@@ -246,6 +247,22 @@ public class DataBase {
             }
         }
     }
-
 }
 
+//    public void printAll(){
+//        Statement statement = DataBase.getConnectStatement();
+//        ResultSet resultSet;
+//        try {
+//            resultSet = statement.executeQuery("select * from schools");
+//
+//            while (resultSet.next()) {
+//                System.out.println(resultSet.getInt(1));
+//                System.out.println(resultSet.getString(2));
+//                System.out.println(resultSet.getString(3));
+//                System.out.println(resultSet.getString(4));
+//                System.out.println("---------------------------------");
+//            }
+//        }catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//    }

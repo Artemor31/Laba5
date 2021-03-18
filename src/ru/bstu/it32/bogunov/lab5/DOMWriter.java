@@ -24,25 +24,6 @@ public class DOMWriter{
             Element rootElement = doc.createElement("school");
             doc.appendChild(rootElement);
 
-            // добавляем первый дочерний элемент к корневому
-            rootElement.appendChild(getSchool(doc,
-                    "Belgorodskaya",
-                    "Belgorod",
-                    "Koneva",
-                    "School49",
-                    "Lamanova"));
-            rootElement.appendChild(getSchool(doc,
-                    "Belgorodskaya",
-                    "Belgorod",
-                    "Koroleva",
-                    "School19",
-                    "Petrova"));
-            rootElement.appendChild(getSchool(doc,
-                    "Belgorodskaya",
-                    "Belgorod",
-                    "Gybkina",
-                    "School43",
-                    "Ivanova"));
             for(School school : schools){
                 rootElement.appendChild(getSchool(doc, school.getRegion(), school.getCity(),
                 school.getStreet(), school.getName(), school.getDirectorName()));
@@ -51,27 +32,25 @@ public class DOMWriter{
 
 
             doc.getDocumentElement().normalize();
-            //создаем объект TransformerFactory для преобразования документа в файл
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
-            // установка параметров форматирования для красивого вывода
+
+            // установка параметров форматирования
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
-            //получение исходного кода готового документа
+
+
             DOMSource source = new DOMSource(doc);
 
-            //создание объекта для записи - файл
             StreamResult file = new StreamResult(new File(path));
-            //запись данных
             transformer.transform(source, file);
-            System.out.println("Создание XML файла закончено");
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    // метод для создания нового узла XML-файла
+
     private static Node getSchool(Document doc, String region, String city, String street, String name, String directorName) {
 
         Element school = doc.createElement("school");
@@ -83,7 +62,7 @@ public class DOMWriter{
         return school;
 
     }
-    // метод для создания одного узла
+
     private static Node getSchoolElements(Document doc, Element element, String name, String value) {
         Element node = doc.createElement(name);
         node.appendChild(doc.createTextNode(value));
