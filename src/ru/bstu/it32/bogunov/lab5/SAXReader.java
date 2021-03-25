@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SAXReader {
-
     public static ArrayList<School> read(String path) {
         ArrayList<School> schools = new ArrayList<>();
         String[] str = new String[5];
@@ -23,7 +22,6 @@ public class SAXReader {
                 public void startElement(String uri, String localName, String qName, Attributes attributes) {
                     tag = qName;
                 }
-                // Метод вызывается когда SAXParser считывает текст между тегами
                 @Override
                 public void characters(char[] ch, int start, int length) {
 
@@ -50,7 +48,6 @@ public class SAXReader {
                         schools.add(school);
                     }
                 }
-
                 @Override
                 public void endElement(String uri, String localName, String qName) {tag = "";}
 
@@ -65,7 +62,6 @@ public class SAXReader {
         }
         return schools;
     }
-
 }
 
 

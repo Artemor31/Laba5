@@ -3,28 +3,34 @@ package ru.bstu.it32.bogunov.lab5;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 import java.util.stream.IntStream;
 
-public class XmlEditor {
+public class XmlEditor implements IParser{
+    private final String path;
 
-    public void writeToXml(String path, ArrayList<School> schools){
-        DOMWriter.write(path, schools);
-    }
+    public XmlEditor(String path){ this.path = path; }
 
-    public  ArrayList<School> readXml(String path){
+    public void writeToXml(ArrayList<School> schools){ DOMWriter.write(path, schools); }
+    public  ArrayList<School> readXml(){
         return SAXReader.read(path);
     }
 
-    public void parseFromXmlToDatabase(List<School> schools, DataBase dataBase){
+    public void addRecord(School school){
+        var list = readXml();
+        list.add(school);
+        writeToXml(list);
+    }
+
+    public void parse(DataBase dataBase){
+        ArrayList<School> schools = readXml();
         Statement statement = DataBase.getConnectStatement();
         int i = 0;
         try {
             statement.executeUpdate("TRUNCATE TABLE schools");
             for (School school: schools) {
                 System.out.println(i);
-                dataBase.addSchoolToDb(school);
+                dataBase.addRecord(school);
                 i++;
             }
         } catch (SQLException e) {
@@ -33,7 +39,8 @@ public class XmlEditor {
         System.out.println("FIle successfully parsed");
     }
 
-    public void changeSchools(ArrayList<School> oldSchools){
+    public void changeRecord(){
+        ArrayList<School> oldSchools = readXml();
         Scanner scanner = new Scanner(System.in);
         int a;
         String changeValue;
@@ -84,6 +91,7 @@ public class XmlEditor {
                 }
             }
         } while (a != 6);
+        writeToXml(oldSchools);
         System.out.println("Value successfully changed");
     }
 
@@ -184,14 +192,15 @@ public class XmlEditor {
         return isContain[0] && isContain[1] && isContain[2] && isContain[3] && isContain[4];
     }
 
-    public void removeSchool(ArrayList<School> schools){
+    public void removeRecord(){
+        ArrayList<School> schools = readXml();
         var searchValues = getSearchValues();
-
         for (int i = 0; i < schools.size(); i++)
             if (containsField(schools.get(i), searchValues)) {
                 schools.remove(i);
                 i = 0;
             }
+        writeToXml(schools);
         System.out.println("Record successfully removed");
     }
 }

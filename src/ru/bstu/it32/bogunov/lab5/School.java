@@ -2,11 +2,7 @@ package ru.bstu.it32.bogunov.lab5;
 
 
 public class School {
-    private String region;
-    private String city;
-    private String street;
-    private String name;
-    private String directorName;
+    private final String region, city, street, name, directorName;
 
     public School(String _region, String _city, String _street, String _name, String _directorName){
         this.region = _region;

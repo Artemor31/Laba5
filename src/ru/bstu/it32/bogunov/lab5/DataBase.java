@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class DataBase {
-
+public class DataBase implements IParser{
     static String userName;
     static String password;
     static String URL;
@@ -38,7 +37,7 @@ public class DataBase {
         return statement;
     }
 
-    public void addSchoolToDb(School school) {
+    public void addRecord(School school) {
         Statement statement = DataBase.getConnectStatement();
         if(statement == null) {
             System.out.println("Error to return statement");
@@ -58,7 +57,7 @@ public class DataBase {
         System.out.println("Record successfully added");
     }
 
-    public ArrayList<School> parseDatabaseToXml(){
+    public void parse(DataBase dataBase){
         var schools = new ArrayList<School>();
         Statement statement = DataBase.getConnectStatement();
         ResultSet resultSet;
@@ -78,8 +77,8 @@ public class DataBase {
             System.out.println(Main.Properties.SQL_ERROR);
             e.printStackTrace();
         }
+        new XmlEditor(Main.Properties.FilePath).writeToXml(schools);
         System.out.println("Table successfully parsed");
-        return schools;
     }
 
     private List<Integer> findEntityInDB() {
@@ -141,7 +140,7 @@ public class DataBase {
         return ids;
     }
 
-    public void changeSchoolInDB() {
+    public void changeRecord() {
         List<Integer> ids = findEntityInDB();
         Scanner scanner = new Scanner(System.in);
         Statement statement = DataBase.getConnectStatement();
@@ -200,10 +199,9 @@ public class DataBase {
         }
     }
 
-    public void removeSchoolFromDB(){
+    public void removeRecord(){
         List<Integer> ids = findEntityInDB();
         Statement statement = DataBase.getConnectStatement();
-
         for(int id : ids){
             try {
                 statement.executeUpdate("delete from schools " +
@@ -220,12 +218,8 @@ public class DataBase {
     private static class Request{
         public boolean isFirst = true;
         public String startReq = "select * from schools where ";
-        public String idReq = "";
-        public String regReq = "";
-        public String cityReq = "";
-        public String streetReq = "";
-        public String nameReq = "";
-        public String directorReq = "";
+        public String idReq = "", regReq = "", cityReq = "";
+        public String streetReq = "", nameReq = "", directorReq = "";
 
         public String buildRequest(){
             addReq(idReq);

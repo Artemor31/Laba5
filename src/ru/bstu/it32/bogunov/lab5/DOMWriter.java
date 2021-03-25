@@ -28,31 +28,22 @@ public class DOMWriter{
                 rootElement.appendChild(getSchool(doc, school.getRegion(), school.getCity(),
                 school.getStreet(), school.getName(), school.getDirectorName()));
             }
-
-
-
             doc.getDocumentElement().normalize();
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
-
             // установка параметров форматирования
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
 
-
             DOMSource source = new DOMSource(doc);
-
             StreamResult file = new StreamResult(new File(path));
             transformer.transform(source, file);
-
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-
     private static Node getSchool(Document doc, String region, String city, String street, String name, String directorName) {
-
         Element school = doc.createElement("school");
         school.appendChild(getSchoolElements(doc, school, "region", region));
         school.appendChild(getSchoolElements(doc, school, "city", city));
@@ -60,7 +51,6 @@ public class DOMWriter{
         school.appendChild(getSchoolElements(doc, school, "name", name));
         school.appendChild(getSchoolElements(doc, school, "directorName", directorName));
         return school;
-
     }
 
     private static Node getSchoolElements(Document doc, Element element, String name, String value) {

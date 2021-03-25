@@ -1,31 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <school>
     <school>
-        <region>Belgorodskaya</region>
-        <city>Belgorod</city>
-        <street>Koneva</street>
-        <name>School49</name>
-        <directorName>Lamanova</directorName>
+        <region>reg</region>
+        <city>city</city>
+        <street>street</street>
+        <name>name</name>
+        <directorName>director</directorName>
     </school>
     <school>
-        <region>Belgorodskaya</region>
-        <city>Belgorod</city>
-        <street>Gybkina</street>
-        <name>School43</name>
-        <directorName>Ivanova</directorName>
+        <region>reg</region>
+        <city>city</city>
+        <street>street3</street>
+        <name>name3</name>
+        <directorName>director3</directorName>
     </school>
     <school>
-        <region>reg1</region>
-        <city>cc</city>
-        <street>w</street>
-        <name>w</name>
-        <directorName>w</directorName>
+        <region>reg2</region>
+        <city>city2</city>
+        <street>street2</street>
+        <name>name2</name>
+        <directorName>director2</directorName>
     </school>
     <school>
-        <region>reg1</region>
-        <city>cc</city>
-        <street>s</street>
-        <name>s</name>
-        <directorName>s</directorName>
+        <region>qw</region>
+        <city>asd</city>
+        <street>ytgufgh</street>
+        <name>uytyu</name>
+        <directorName>bnmbnm</directorName>
+    </school>
+    <school>
+        <region>qqq</region>
+        <city>www</city>
+        <street>hhh</street>
+        <name>jjj</name>
+        <directorName>mmm</directorName>
     </school>
 </school>
