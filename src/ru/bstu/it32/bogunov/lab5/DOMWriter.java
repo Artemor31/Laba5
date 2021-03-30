@@ -1,5 +1,6 @@
 package ru.bstu.it32.bogunov.lab5;
 
+import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -21,7 +22,7 @@ public class DOMWriter{
         try {
             builder = factory.newDocumentBuilder();
             Document doc = builder.newDocument();
-            Element rootElement = doc.createElement("school");
+            Element rootElement = doc.createElement("SchoolsList");
             doc.appendChild(rootElement);
 
             for(School school : schools){
@@ -45,6 +46,10 @@ public class DOMWriter{
 
     private static Node getSchool(Document doc, String region, String city, String street, String name, String directorName) {
         Element school = doc.createElement("school");
+        Attr attr = doc.createAttribute("id");
+        attr.setValue("1");
+        school.setAttributeNode(attr);
+
         school.appendChild(getSchoolElements(doc, school, "region", region));
         school.appendChild(getSchoolElements(doc, school, "city", city));
         school.appendChild(getSchoolElements(doc, school, "street", street));

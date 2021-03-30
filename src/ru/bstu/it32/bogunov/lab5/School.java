@@ -1,10 +1,14 @@
 package ru.bstu.it32.bogunov.lab5;
 
 
+import java.util.ArrayList;
+
 public class School {
+    private int id;
     private final String region, city, street, name, directorName;
 
     public School(String _region, String _city, String _street, String _name, String _directorName){
+        this.id = 0;
         this.region = _region;
         this.city = _city;
         this.street = _street;
@@ -12,9 +16,26 @@ public class School {
         this.directorName = _directorName;
     }
 
-    public String getRegion(){
-        return region;
+    public static School addSchoolFromConsole(){
+        return new School(InputController.getStrFromCon("Enter Region:"),
+                InputController.getStrFromCon("Enter City:"),
+                InputController.getStrFromCon("Enter Street:"),
+                InputController.getStrFromCon("Enter Name:"),
+                InputController.getStrFromCon("Enter Director:"));
     }
+
+    public static int getMaxId(ArrayList<School> schools){
+        int max = 0;
+        for (int i = 0; i < schools.size(); i++)
+            if (schools.get(max).getId() < schools.get(i).getId())
+                max = i;
+        return max;
+    }
+
+    public int getId(){
+        return id;
+    }
+    public String getRegion(){ return region; }
     public String getCity(){
         return city;
     }
@@ -26,14 +47,6 @@ public class School {
     }
     public String getDirectorName(){
         return directorName;
-    }
-
-    public static School addSchoolFromConsole(){
-        return new School(InputController.getStrFromCon("Enter Region:"),
-                InputController.getStrFromCon("Enter City:"),
-                InputController.getStrFromCon("Enter Street:"),
-                InputController.getStrFromCon("Enter Name:"),
-                InputController.getStrFromCon("Enter Director:"));
     }
 }
 

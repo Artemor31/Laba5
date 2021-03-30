@@ -5,6 +5,12 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Objects;
 
+// TODO id in XML
+// TODO XML attributes
+// TODO create schools with id  and...
+// TODO IF DB => autoincrement id
+// TODO IF XML => Find max and make max+1
+
 public class Main {
     public static void main(String[] args) {
         Properties.initialize();

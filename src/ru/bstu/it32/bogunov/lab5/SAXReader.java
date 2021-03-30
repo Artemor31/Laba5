@@ -12,15 +12,27 @@ public class SAXReader {
     public static ArrayList<School> read(String path) {
         ArrayList<School> schools = new ArrayList<>();
         String[] str = new String[5];
+        final String[] id = {""};
         try {
             SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser saxParser = factory.newSAXParser();
             DefaultHandler handler = new DefaultHandler() {
 
+                /*
+                public void startElement(String uri, String localName, String qName, Attributes attributes){
+                     if(localName.equalsIgnoreCase("item")){
+                        //currentMessage.setMediaUrl(attributes.getValue(BaseFeedParser.Url));
+                                     String valueis=attributes.getValue("name")
+                    }
+                    super.startElement(uri, localName, qName, attributes);
+                }
+                * */
                 String tag = "";
                 @Override
                 public void startElement(String uri, String localName, String qName, Attributes attributes) {
                     tag = qName;
+                   // if(localName.equalsIgnoreCase("school"))
+                      //  id[0] = attributes.getValue("id");
                 }
                 @Override
                 public void characters(char[] ch, int start, int length) {
