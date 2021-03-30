@@ -17,6 +17,7 @@ public class DataBase implements IParser{
     }
 
     public static Statement getConnectStatement() {
+        DataBase db = new DataBase(Main.Properties.userName, Main.Properties.password, Main.Properties.URL);
         Statement statement = null;
         Connection connection;
 
@@ -67,6 +68,7 @@ public class DataBase implements IParser{
 
             while (resultSet.next()) {
                 schools.add(new School(
+                        resultSet.getInt(1),
                         resultSet.getString(2),
                         resultSet.getString(3),
                         resultSet.getString(4),

@@ -26,7 +26,7 @@ public class DOMWriter{
             doc.appendChild(rootElement);
 
             for(School school : schools){
-                rootElement.appendChild(getSchool(doc, school.getRegion(), school.getCity(),
+                rootElement.appendChild(getSchool(doc, school.getWriteId(schools), school.getRegion(), school.getCity(),
                 school.getStreet(), school.getName(), school.getDirectorName()));
             }
             doc.getDocumentElement().normalize();
@@ -44,10 +44,10 @@ public class DOMWriter{
         }
     }
 
-    private static Node getSchool(Document doc, String region, String city, String street, String name, String directorName) {
+    private static Node getSchool(Document doc, int id, String region, String city, String street, String name, String directorName) {
         Element school = doc.createElement("school");
         Attr attr = doc.createAttribute("id");
-        attr.setValue("1");
+        attr.setValue(String.valueOf(id));
         school.setAttributeNode(attr);
 
         school.appendChild(getSchoolElements(doc, school, "region", region));

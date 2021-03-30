@@ -26,16 +26,16 @@ public class XmlEditor implements IParser{
         ArrayList<School> schools = readXml();
         Statement statement = DataBase.getConnectStatement();
         int i = 0;
-//        try {
-            //statement.executeUpdate("TRUNCATE TABLE schools");
+        try {
+            statement.executeUpdate("TRUNCATE TABLE schools");
             for (School school: schools) {
                 System.out.println(i);
                 dataBase.addRecord(school);
                 i++;
             }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         System.out.println("FIle successfully parsed");
     }
 

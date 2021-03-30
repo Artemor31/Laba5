@@ -3,11 +3,11 @@ package ru.bstu.it32.bogunov.lab5;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Objects;
 
-// TODO id in XML
-// TODO XML attributes
-// TODO create schools with id  and...
+
 // TODO IF DB => autoincrement id
 // TODO IF XML => Find max and make max+1
 
@@ -17,10 +17,12 @@ public class Main {
         int a = InputController.getIntFromString(3,
                 "<1> Work with DataBase\n<2> Work with XML\n<3> Exit");
         IParser parser = null;
-        switch (a){
+        switch (a) {
             case 1 -> parser = new DataBase(Properties.userName, Properties.password, Properties.URL);
             case 2 -> parser = new XmlEditor(Properties.FilePath);
-            case 3 -> {return;}
+            case 3 -> {
+                return;
+            }
         }
         int b = InputController.getIntFromString(5, """
                 <1> Add record
@@ -28,15 +30,15 @@ public class Main {
                 <3> Remove record
                 <4> Parse Data
                 <5> Exit""");
-        if(parser == null)
+        if (parser == null)
             throw new NullPointerException();
         switch (b) {
             case 1 -> parser.addRecord(School.addSchoolFromConsole());
             case 2 -> parser.changeRecord();
             case 3 -> parser.removeRecord();
             case 4 -> {
-                assert parser instanceof DataBase;
-                parser.parse((DataBase)parser);
+                DataBase dataBase= new DataBase(Properties.userName, Properties.password, Properties.URL);
+                parser.parse(dataBase);
             }
         }
         main(null);

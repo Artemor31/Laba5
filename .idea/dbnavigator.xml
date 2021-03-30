@@ -26,7 +26,7 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="c14863cb-8638-46dd-9eb5-87295e1ea8d9">
-        <schema name="schooldb" object-types="table, column, constraint, view, procedure, dataset trigger, index, function" />
+        <schema name="schooldb" object-types="table, function, constraint, dataset trigger, view, column, index, procedure" />
       </connection>
     </loaded-nodes>
   </component>
@@ -67,7 +67,9 @@
     <filter-actions connection-id="88b27226-216c-40af-a132-b29ccb7a635a" dataset="world.city" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
-    <last-used-providers />
+    <last-used-providers>
+      <object-type object-type="TABLE" editor-provider="DATA" />
+    </last-used-providers>
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />

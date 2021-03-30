@@ -12,27 +12,20 @@ public class SAXReader {
     public static ArrayList<School> read(String path) {
         ArrayList<School> schools = new ArrayList<>();
         String[] str = new String[5];
-        final String[] id = {""};
         try {
             SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser saxParser = factory.newSAXParser();
             DefaultHandler handler = new DefaultHandler() {
 
-                /*
-                public void startElement(String uri, String localName, String qName, Attributes attributes){
-                     if(localName.equalsIgnoreCase("item")){
-                        //currentMessage.setMediaUrl(attributes.getValue(BaseFeedParser.Url));
-                                     String valueis=attributes.getValue("name")
-                    }
-                    super.startElement(uri, localName, qName, attributes);
-                }
-                * */
+                String id = "";
                 String tag = "";
                 @Override
                 public void startElement(String uri, String localName, String qName, Attributes attributes) {
                     tag = qName;
-                   // if(localName.equalsIgnoreCase("school"))
-                      //  id[0] = attributes.getValue("id");
+                    if(tag.equalsIgnoreCase("school")) {
+                        id = attributes.getValue("id");
+                        System.out.println(id);
+                    }
                 }
                 @Override
                 public void characters(char[] ch, int start, int length) {
@@ -53,9 +46,9 @@ public class SAXReader {
                         str[4] = new String(ch, start, length);
                     }
                     if(str[0] != null && str[1] != null && str[2] != null &&
-                            str[3] != null && str[4] != null) {
+                            str[3] != null && str[4] != null && !id.equals("")) {
 
-                        School school = new School(str[0], str[1], str[2], str[3], str[4]);
+                        School school = new School(Integer.parseInt(id), str[0], str[1], str[2], str[3], str[4]);
                         Arrays.fill(str, null);
                         schools.add(school);
                     }
