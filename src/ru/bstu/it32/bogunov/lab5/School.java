@@ -38,13 +38,13 @@ public class School {
         for (int i = 0; i < schools.size(); i++)
             if (schools.get(max).getId() < schools.get(i).getId())
                 max = i;
-        return max;
+        return schools.get(max).getId();
     }
 
 
     public int getWriteId(ArrayList<School> schools){
         if (id == 0)
-            id = 2 + getMaxId(schools);
+            id = 1 + getMaxId(schools);
         return id;
     }
 

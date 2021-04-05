@@ -1,269 +1,52 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <SchoolsList>
-    <school id="1">
-        <region>reg</region>
-        <city>city</city>
-        <street>street</street>
-        <name>name</name>
-        <directorName>director</directorName>
-    </school>
-    <school id="2">
-        <region>reg</region>
-        <city>city</city>
-        <street>street3</street>
-        <name>name3</name>
-        <directorName>director3</directorName>
-    </school>
-    <school id="3">
-        <region>reg2</region>
-        <city>city2</city>
-        <street>street2</street>
-        <name>name2</name>
-        <directorName>director2</directorName>
-    </school>
-    <school id="4">
-        <region>qw</region>
-        <city>asd</city>
-        <street>ytgufgh</street>
-        <name>uytyu</name>
-        <directorName>bnmbnm</directorName>
-    </school>
-    <school id="5">
-        <region>rrr</region>
-        <city>ccc</city>
-        <street>sss</street>
-        <name>nnn</name>
-        <directorName>ddd</directorName>
-    </school>
-    <school id="6">
-        <region>qqq</region>
-        <city>www</city>
-        <street>eee</street>
-        <name>rrr</name>
-        <directorName>ttt</directorName>
-    </school>
-    <school id="7">
-        <region>qqq</region>
-        <city>www</city>
-        <street>aaa</street>
-        <name>ssss</name>
-        <directorName>ddd</directorName>
-    </school>
-    <school id="8">
-        <region>zzz</region>
-        <city>xxx</city>
-        <street>ccc</street>
-        <name>vvv</name>
-        <directorName>bbb</directorName>
-    </school>
-    <school id="9">
-        <region>qw</region>
-        <city>as</city>
-        <street>qw</street>
-        <name>as</name>
-        <directorName>qw</directorName>
-    </school>
-    <school id="10">
-        <region>reg</region>
-        <city>city</city>
-        <street>street</street>
-        <name>name</name>
-        <directorName>director</directorName>
-    </school>
-    <school id="11">
-        <region>reg</region>
-        <city>city</city>
-        <street>street3</street>
-        <name>name3</name>
-        <directorName>director3</directorName>
-    </school>
-    <school id="12">
-        <region>reg2</region>
-        <city>city2</city>
-        <street>street2</street>
-        <name>name2</name>
-        <directorName>director2</directorName>
-    </school>
-    <school id="13">
-        <region>qw</region>
-        <city>asd</city>
-        <street>ytgufgh</street>
-        <name>uytyu</name>
-        <directorName>bnmbnm</directorName>
-    </school>
-    <school id="14">
-        <region>rrr</region>
-        <city>ccc</city>
-        <street>sss</street>
-        <name>nnn</name>
-        <directorName>ddd</directorName>
-    </school>
-    <school id="15">
-        <region>qqq</region>
-        <city>www</city>
-        <street>eee</street>
-        <name>rrr</name>
-        <directorName>ttt</directorName>
-    </school>
-    <school id="16">
-        <region>qqq</region>
-        <city>www</city>
-        <street>aaa</street>
-        <name>ssss</name>
-        <directorName>ddd</directorName>
-    </school>
     <school id="17">
-        <region>zzz</region>
-        <city>xxx</city>
-        <street>ccc</street>
-        <name>vvv</name>
-        <directorName>bbb</directorName>
+        <region>reg1</region>
+        <city>city1</city>
+        <street>street1</street>
+        <name>name1</name>
+        <directorName>director1</directorName>
     </school>
     <school id="18">
-        <region>qw</region>
-        <city>as</city>
-        <street>qw</street>
-        <name>as</name>
-        <directorName>qw</directorName>
+        <region>reg2</region>
+        <city>city2</city>
+        <street>street3</street>
+        <name>name3</name>
+        <directorName>director3</directorName>
     </school>
     <school id="19">
-        <region>reg</region>
-        <city>city</city>
-        <street>street</street>
-        <name>name</name>
-        <directorName>director</directorName>
-    </school>
-    <school id="20">
-        <region>reg</region>
-        <city>city</city>
-        <street>street3</street>
-        <name>name3</name>
-        <directorName>director3</directorName>
+        <region>reg5</region>
+        <city>city5</city>
+        <street>street5</street>
+        <name>name5</name>
+        <directorName>director5</directorName>
     </school>
     <school id="21">
-        <region>reg2</region>
-        <city>city2</city>
-        <street>street2</street>
-        <name>name2</name>
-        <directorName>director2</directorName>
+        <region>reg1</region>
+        <city>city1</city>
+        <street>street1</street>
+        <name>name1</name>
+        <directorName>director1</directorName>
     </school>
     <school id="22">
-        <region>qw</region>
-        <city>asd</city>
-        <street>ytgufgh</street>
-        <name>uytyu</name>
-        <directorName>bnmbnm</directorName>
-    </school>
-    <school id="23">
-        <region>rrr</region>
-        <city>ccc</city>
-        <street>sss</street>
-        <name>nnn</name>
-        <directorName>ddd</directorName>
-    </school>
-    <school id="24">
-        <region>qqq</region>
-        <city>www</city>
-        <street>eee</street>
-        <name>rrr</name>
-        <directorName>ttt</directorName>
-    </school>
-    <school id="25">
-        <region>qqq</region>
-        <city>www</city>
-        <street>aaa</street>
-        <name>ssss</name>
-        <directorName>ddd</directorName>
-    </school>
-    <school id="26">
-        <region>zzz</region>
-        <city>xxx</city>
-        <street>ccc</street>
-        <name>vvv</name>
-        <directorName>bbb</directorName>
-    </school>
-    <school id="27">
-        <region>qw</region>
-        <city>as</city>
-        <street>qw</street>
-        <name>as</name>
-        <directorName>qw</directorName>
-    </school>
-    <school id="28">
-        <region>reg</region>
-        <city>city</city>
-        <street>street</street>
-        <name>name</name>
-        <directorName>director</directorName>
-    </school>
-    <school id="29">
-        <region>reg</region>
-        <city>city</city>
+        <region>reg2</region>
+        <city>city2</city>
         <street>street3</street>
         <name>name3</name>
         <directorName>director3</directorName>
     </school>
-    <school id="30">
-        <region>reg2</region>
-        <city>city2</city>
-        <street>street2</street>
-        <name>name2</name>
-        <directorName>director2</directorName>
+    <school id="23">
+        <region>reg5</region>
+        <city>city5</city>
+        <street>street5</street>
+        <name>name5</name>
+        <directorName>director5</directorName>
     </school>
-    <school id="31">
-        <region>qw</region>
-        <city>asd</city>
-        <street>ytgufgh</street>
-        <name>uytyu</name>
-        <directorName>bnmbnm</directorName>
-    </school>
-    <school id="32">
-        <region>rrr</region>
-        <city>ccc</city>
-        <street>sss</street>
-        <name>nnn</name>
-        <directorName>ddd</directorName>
-    </school>
-    <school id="33">
-        <region>qqq</region>
-        <city>www</city>
-        <street>eee</street>
-        <name>rrr</name>
-        <directorName>ttt</directorName>
-    </school>
-    <school id="34">
-        <region>qqq</region>
-        <city>www</city>
-        <street>aaa</street>
-        <name>ssss</name>
-        <directorName>ddd</directorName>
-    </school>
-    <school id="35">
-        <region>zzz</region>
-        <city>xxx</city>
-        <street>ccc</street>
-        <name>vvv</name>
-        <directorName>bbb</directorName>
-    </school>
-    <school id="36">
-        <region>qw</region>
-        <city>as</city>
-        <street>qw</street>
-        <name>as</name>
-        <directorName>qw</directorName>
-    </school>
-    <school id="37">
-        <region>qwe</region>
-        <city>asd</city>
-        <street>qwe</street>
-        <name>asd</name>
-        <directorName>asdfghjk</directorName>
-    </school>
-    <school id="38">
-        <region>ггг</region>
-        <city>ггг</city>
-        <street>ггг</street>
-        <name>ггг</name>
-        <directorName>ггг</directorName>
+    <school id="24">
+        <region>йцу</region>
+        <city>йцу</city>
+        <street>йцу</street>
+        <name>йцу</name>
+        <directorName>йцу</directorName>
     </school>
 </SchoolsList>

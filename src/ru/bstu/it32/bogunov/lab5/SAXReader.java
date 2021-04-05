@@ -24,7 +24,6 @@ public class SAXReader {
                     tag = qName;
                     if(tag.equalsIgnoreCase("school")) {
                         id = attributes.getValue("id");
-                        System.out.println(id);
                     }
                 }
                 @Override

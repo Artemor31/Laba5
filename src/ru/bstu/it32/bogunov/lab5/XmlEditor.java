@@ -22,20 +22,27 @@ public class XmlEditor implements IParser{
         writeToXml(list);
     }
 
-    public void parse(DataBase dataBase){
+//    public void parse(DataBase dataBase){
+//        ArrayList<School> schools = readXml();
+//        Statement statement = DataBase.getConnectStatement();
+//        int i = 0;
+//        try {
+//            statement.executeUpdate("TRUNCATE TABLE schools");
+//            for (School school: schools) {
+//                System.out.println(i);
+//                dataBase.addRecord(school);
+//                i++;
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        System.out.println("FIle successfully parsed");
+//    }
+
+    public void parse(DataBase dataBase) {
         ArrayList<School> schools = readXml();
-        Statement statement = DataBase.getConnectStatement();
-        int i = 0;
-        try {
-            statement.executeUpdate("TRUNCATE TABLE schools");
-            for (School school: schools) {
-                System.out.println(i);
-                dataBase.addRecord(school);
-                i++;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        for (School school : schools)
+            dataBase.addRecord(school);
         System.out.println("FIle successfully parsed");
     }
 

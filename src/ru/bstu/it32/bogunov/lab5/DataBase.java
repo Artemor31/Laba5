@@ -38,6 +38,26 @@ public class DataBase implements IParser{
         return statement;
     }
 
+//    public  void addRecordWithId(School school){
+//        Statement statement = DataBase.getConnectStatement();
+//        if(statement == null) {
+//            System.out.println("Error to return statement");
+//            return;
+//        }
+//        try {
+//            statement.executeUpdate("insert into schools (id, region, city, street, name, directorName) " +
+//                    "VALUES ('" + school.getId() +
+//                    "', '" + school.getRegion() +
+//                    "', '" + school.getCity() +
+//                    "', '" + school.getStreet() +
+//                    "', '" + school.getName() +
+//                    "', '" + school.getDirectorName() + "')");
+//        } catch (SQLException e) {
+//            System.out.println(Main.Properties.SQL_ERROR);
+//            e.printStackTrace();
+//        }
+//    }
+
     public void addRecord(School school) {
         Statement statement = DataBase.getConnectStatement();
         if(statement == null) {
@@ -55,7 +75,6 @@ public class DataBase implements IParser{
             System.out.println(Main.Properties.SQL_ERROR);
             e.printStackTrace();
         }
-        System.out.println("Record successfully added");
     }
 
     public void parse(DataBase dataBase){
