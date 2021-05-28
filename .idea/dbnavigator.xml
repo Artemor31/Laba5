@@ -24,11 +24,7 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="c14863cb-8638-46dd-9eb5-87295e1ea8d9">
-        <schema name="schooldb" object-types="table, function, constraint, dataset trigger, view, column, index, procedure" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="88b27226-216c-40af-a132-b29ccb7a635a">
@@ -40,9 +36,7 @@
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="c14863cb-8638-46dd-9eb5-87295e1ea8d9" object-ref="schemas/schooldb/tables/schools" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="88b27226-216c-40af-a132-b29ccb7a635a" />

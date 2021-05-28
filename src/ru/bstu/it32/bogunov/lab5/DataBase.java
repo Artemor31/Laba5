@@ -65,8 +65,9 @@ public class DataBase implements IParser{
             return;
         }
         try {
-            statement.executeUpdate("insert into schools (region, city, street, name, directorName) " +
-                    "VALUES ('" + school.getRegion() +
+            statement.executeUpdate("replace into schools (id, region, city, street, name, directorName) " +
+                    "VALUES ('" + school.getId() +
+                    "', '"+ school.getRegion() +
                     "', '" + school.getCity() +
                     "', '" + school.getStreet() +
                     "', '" + school.getName() +

@@ -1,52 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <SchoolsList>
-    <school id="17">
-        <region>reg1</region>
-        <city>city1</city>
-        <street>street1</street>
-        <name>name1</name>
-        <directorName>director1</directorName>
-    </school>
-    <school id="18">
-        <region>reg2</region>
-        <city>city2</city>
-        <street>street3</street>
-        <name>name3</name>
-        <directorName>director3</directorName>
-    </school>
-    <school id="19">
-        <region>reg5</region>
+    <school id="1">
+        <region>qwertyu</region>
         <city>city5</city>
         <street>street5</street>
         <name>name5</name>
         <directorName>director5</directorName>
-    </school>
-    <school id="21">
-        <region>reg1</region>
-        <city>city1</city>
-        <street>street1</street>
-        <name>name1</name>
-        <directorName>director1</directorName>
-    </school>
-    <school id="22">
-        <region>reg2</region>
-        <city>city2</city>
-        <street>street3</street>
-        <name>name3</name>
-        <directorName>director3</directorName>
-    </school>
-    <school id="23">
-        <region>reg5</region>
-        <city>city5</city>
-        <street>street5</street>
-        <name>name5</name>
-        <directorName>director5</directorName>
-    </school>
-    <school id="24">
-        <region>йцу</region>
-        <city>йцу</city>
-        <street>йцу</street>
-        <name>йцу</name>
-        <directorName>йцу</directorName>
     </school>
 </SchoolsList>
